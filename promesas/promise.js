@@ -65,17 +65,20 @@ function llamado() {
 
 
 const promise01 = () => new Promise((resolve, reject) => {
-        setTimeout =>(resolve,llamado(),"01");
+        setTimeout(()=>resolve("01"),llamado());
 });
 
 const promise02 = () => new Promise((resolve, reject) => {
-        setTimeout =>(resolve,llamado(),"02");
+        setTimeout(() =>resolve("02"),llamado());
 });
 const promise03 = () => new Promise((resolve, reject) => {
-        setTimeout =>(resolve,llamado(),"3");
+        setTimeout(() =>resolve("03"),llamado());
 });
 
-Promise.race([promise01,promise02,promise03])
+Promise.race([promise01(),promise02(),promise03()])
 .then((resultado) => {
     console.log("resultado", resultado);
+})
+.catch ((error)=>{
+    console.error ("fallo", error);
 });
